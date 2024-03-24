@@ -24,9 +24,8 @@ public class User implements UserDetails {
     private String name;
     private String username;
     private String password;
-    private int c1Status;
-    private int c2Status;
-    private int c3Status;
+
+
 
     private boolean accountNonExpired;
     private boolean isEnabled;

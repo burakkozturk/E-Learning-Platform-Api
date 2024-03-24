@@ -66,16 +66,5 @@ public class UserController {
         return "This is ADMIN!";
     }
 
-    @GetMapping("/progress/{username}")
-    public UserProgressDto getUserProgress(@PathVariable String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("Kullanıcı bulunamadı: " + username));
 
-        UserProgressDto dto = new UserProgressDto();
-        dto.setC1Status(user.getC1Status());
-        dto.setC2Status(user.getC2Status());
-        dto.setC3Status(user.getC3Status());
-
-        return dto;
-    }
 }
