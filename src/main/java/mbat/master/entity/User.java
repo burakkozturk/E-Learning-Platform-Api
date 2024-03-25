@@ -25,7 +25,12 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-
+    @Column(name = "c1status", nullable = true)
+    private Integer c1status;
+    @Column(name = "c2status", nullable = true)
+    private Integer c2status;
+    @Column(name = "c3status", nullable = true)
+    private Integer c3status;
 
     private boolean accountNonExpired;
     private boolean isEnabled;
