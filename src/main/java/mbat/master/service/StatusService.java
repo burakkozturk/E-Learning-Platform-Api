@@ -1,5 +1,6 @@
 package mbat.master.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import mbat.master.entity.Status;
 import mbat.master.repository.StatusRepository;
 import org.springframework.stereotype.Service;
@@ -29,115 +30,83 @@ public class StatusService {
 
     // u1 değerini 1 olarak ayarlayın
     public void setU1ToActive(Long statusId) {
-        updateStatusValue(statusId, "u1");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU1(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u2 değerini 1 olarak ayarlayın
     public void setU2ToActive(Long statusId) {
-        updateStatusValue(statusId, "u2");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU2(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u3 değerini 1 olarak ayarlayın
     public void setU3ToActive(Long statusId) {
-        updateStatusValue(statusId, "u3");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU3(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
-
 
     public void setU4ToActive(Long statusId) {
-        updateStatusValue(statusId, "u4");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU4(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u2 değerini 1 olarak ayarlayın
     public void setU5ToActive(Long statusId) {
-        updateStatusValue(statusId, "u5");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU5(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u3 değerini 1 olarak ayarlayın
     public void setU6ToActive(Long statusId) {
-        updateStatusValue(statusId, "u6");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU6(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
-
 
     public void setU7ToActive(Long statusId) {
-        updateStatusValue(statusId, "u7");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU7(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u2 değerini 1 olarak ayarlayın
     public void setU8ToActive(Long statusId) {
-        updateStatusValue(statusId, "u8");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU8(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u3 değerini 1 olarak ayarlayın
     public void setU9ToActive(Long statusId) {
-        updateStatusValue(statusId, "u9");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU9(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
     public void setU10ToActive(Long statusId) {
-        updateStatusValue(statusId, "u10");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU10(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u2 değerini 1 olarak ayarlayın
+
     public void setU11ToActive(Long statusId) {
-        updateStatusValue(statusId, "u11");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU11(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    // u3 değerini 1 olarak ayarlayın
     public void setU12ToActive(Long statusId) {
-        updateStatusValue(statusId, "u12");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU12(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-
-    // u3 değerini 1 olarak ayarlayın
     public void setU13ToActive(Long statusId) {
-        updateStatusValue(statusId, "u13");
+        Status status = statusRepository.findById(statusId).orElseThrow(() -> new EntityNotFoundException("Status not found: " + statusId));
+        status.setU13(1); // Aktif olarak ayarla
+        statusRepository.save(status); // Değişiklikleri kaydet
     }
 
-    private void updateStatusValue(Long statusId, String fieldName) {
-        Status status = statusRepository.findById(statusId)
-                .orElseThrow(() -> new IllegalArgumentException("Status not found with id: " + statusId));
-
-        switch (fieldName) {
-            case "u1":
-                status.setU1(1);
-                break;
-            case "u2":
-                status.setU2(1);
-                break;
-            case "u3":
-                status.setU3(1);
-                break;
-            case "u4":
-                status.setU1(1);
-                break;
-            case "u5":
-                status.setU2(1);
-                break;
-            case "u6":
-                status.setU3(1);
-                break;
-            case "u7":
-                status.setU1(1);
-                break;
-            case "u8":
-                status.setU2(1);
-                break;
-            case "u9":
-                status.setU3(1);
-                break;
-            case "u10":
-                status.setU1(1);
-                break;
-            case "u11":
-                status.setU2(1);
-                break;
-            case "u12":
-                status.setU3(1);
-                break;
-            case "u13":
-                status.setU1(1);
-                break;
-        }
-
-    }
 
 }
