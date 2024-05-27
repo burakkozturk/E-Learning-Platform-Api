@@ -1,6 +1,5 @@
 package mbat.master.security;
 
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Component
 @Slf4j
@@ -44,9 +42,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails user = userService.loadUserByUsername(userName);
-            log.info("user loaded " + user);
+            log.info("User loaded: " + user.getUsername());
             if (jwtService.validateToken(token, user)) {
-                log.info("token validated " + token);
+                log.info("Token validated: " + token);
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);

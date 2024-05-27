@@ -1,6 +1,5 @@
 package mbat.master.security;
 
-
 import mbat.master.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,6 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -24,11 +22,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
-
     private final UserService userService;
-
     private final PasswordEncoder passwordEncoder;
-
 
     public SecurityConfig(JwtAuthFilter jwtAuthFilter, UserService userService, PasswordEncoder passwordEncoder) {
         this.jwtAuthFilter = jwtAuthFilter;
@@ -41,7 +36,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(x ->
-                        x.requestMatchers("/api/users/**","/api/contents/**","/api/units/**","/api/quizzes/**","/api/status/**","/api/**,","/api/courses/**","/auth/**", "/auth/addNewUser/**", "/auth/generateToken/**").permitAll()
+                        x.requestMatchers("/api/users/**","/api/contents/**","/api/units/**","/api/quizzes/**","/api/status/**","/api/**,","/api/courses/**","/auth/**", "/auth/addNewUser/**", "/auth/generateToken/**","/progress/**").permitAll()
                 )
                 .authorizeHttpRequests(x ->
                         x.requestMatchers("/auth/user").authenticated()
@@ -55,16 +50,14 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userService);
-        authenticationProvider.setPasswordEncoder(passwordEncoder);
-        return authenticationProvider;
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userService);
+        authProvider.setPasswordEncoder(passwordEncoder);
+        return authProvider;
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
-
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
-
 }

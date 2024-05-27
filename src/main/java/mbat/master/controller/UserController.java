@@ -3,6 +3,7 @@ package mbat.master.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import mbat.master.dto.AuthRequest;
+import mbat.master.dto.CourseProgressDto;
 import mbat.master.dto.CreateUserRequest;
 import mbat.master.dto.UserProgressDto;
 import mbat.master.entity.User;
@@ -55,6 +56,11 @@ public class UserController {
         log.info("invalid username " + request.username());
         throw new UsernameNotFoundException("invalid username {} " + request.username());
     }
+
+//    @GetMapping("/user/{id}/progress")
+//    public CourseProgressDto getUserCourseProgress(@PathVariable Long id) {
+//        return service.getUserCourseProgress(id);
+//    }
 
     @GetMapping("/user")
     public String getUserString() {

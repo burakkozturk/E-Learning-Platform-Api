@@ -17,12 +17,12 @@ public class UpdateController {
 
     // Diğer endpoint'ler...
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateProfile(@PathVariable Long id, @RequestBody UserUpdateDto userUpdateDto) {
-        User updatedUser = userService.updateUser(id, userUpdateDto);
-        if (updatedUser == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(updatedUser);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<User> updateProfile(@PathVariable Long id, @RequestBody UserUpdateDto userUpdateDto) {
+//        User updatedUser = userService.updateUser(id, userUpdateDto);
+//        if (updatedUser == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(updatedUser);
+//    }
 }
