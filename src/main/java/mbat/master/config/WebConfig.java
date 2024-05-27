@@ -1,4 +1,4 @@
-package mbat.master.config;
+/*package mbat.master.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,3 +18,4 @@ public class WebConfig implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 }
+        */
