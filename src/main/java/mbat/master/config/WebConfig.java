@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000", "https://mbat-6bce5ec6f31f.herokuapp.com","https://mbat-platform.netlify.app")
+                .allowedOrigins("http://localhost:3000", "https://mbat4seniors-api-0479bc1f3025.herokuapp.com","https://mbat-platform.netlify.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
